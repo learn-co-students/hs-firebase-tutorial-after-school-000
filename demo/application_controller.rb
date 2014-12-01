@@ -8,21 +8,12 @@ class MyApp < Sinatra::Base
   DATABASE.add_table("users", {"name" => "Bob", "email" => "bob@bob.com", "password" => "passwordforbob"})
 
   get '/' do
+    @users = DATABASE.get_data
     erb :index
   end
 
   post '/signup' do
-    duplicates = DATABASE.search_by_attribute("email", params[:email])
-    if duplicates == nil
-      DATABASE.add("users", {"name" => params[:name], "email" => params[:email], "password" => params[:password]})
+    DATABASE.add("users", {"name" => params[:name], "email" => params[:email], "password" => params[:password]})
       redirect('/')
-    else
-      "Someone has already signed up with that email address. <a href='/'>Try again</a>"
-    end
-  end
-
-  get '/users' do
-    @users = DATABASE.get_data
-    erb :users
   end
 end

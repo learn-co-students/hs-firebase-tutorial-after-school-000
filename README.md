@@ -63,8 +63,18 @@ We've created a `get_data` method for you that will return an array of all the e
 ```ruby
 DATABASE.get_data
 ```
-We've also created a `search_by_attribute` method that can be used to search for specific entries in your database. 
 
-Note: This is a very basic search method. If you are looking for someone named Bob and there are multiple Bobs in your database it will just return the last one it finds. If you want to find a specific entry you'll need to base your search on information that is unique to each entry. There are almost no restrictions on what kind of information can be added to a Firebase database, so it will be up to you to police any data added to the system. Take a look at the `post '/signup'` method in the demo for an example of how you can prevent duplicate entries.
++ This method returns a nested array with the unique id and hash of values for each entry that looks like this:
+
+```ruby
+[["-Jc6Q68JAsAR17Uqs6Gz", {"email"=>"bob@bob.com", "name"=>"Bob", "password"=>"passwordforbob"}], ["-Jc6Q9tTwpW8f4dVOot-", {"email"=>"joe@joe.com", "name"=>"Joe", "password"=>"password"}], ["-Jc6jZ6jB7GpcGD9WV5e", {"email"=>"bobert@bobert.com", "name"=>"Bob", "password"=>"password"}]]
+```
+
+Take a look at the `index.erb` template for an example of how to iterate through an array like this and pull out information for a user.
+
+We've also created a `search_by_attribute` method that can be used to search for specific entries in your database. This is a very basic search method. If you are looking for someone named Bob and there are multiple Bobs in your database it will just return the last one it finds. You'll have better success if you base your search on information that is more likely to be unique to each entry - like an email address. 
+
+### Happy coding!
+
 
 
