@@ -43,15 +43,14 @@ class FlatironBase
     puts @data.to_s
   end
 
-  def search_by_attribute(attribute, search_value)
+  def search_by_attribute(attribute, value)
     @data = @firebase.get(@table).body
-    id = 0
-    @data.each do |key, value|
-      if value[attribute] == search_value
-        id = key
+    @data.each do |data_id, data_values|
+      if data_values[attribute] == value
+        @id = data_id
       end
     end
-    path = "#{@table}/#{id}"
+    path = "#{@table}/#{@id}"
     @firebase.get(path).body
   end
 
