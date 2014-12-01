@@ -43,10 +43,28 @@ DATABASE.add_table("users", {"name" => "Bob", "email" => "bob@bob.com", "passwor
 
 When this app runs for the first time it will create a "users" table with a row for "Bob". **Note: Creating a placeholder hash with the actual attributes that you want to save (for example: name, email, password) will make your life MUCH easier.**
 
-+ **The rest of these steps will need to be highly customized by you, based on the needs of your app. We'll be walking through how to add users to a database as an example. __These instructions assume that you already have a form properly set up in your application.__ **
++ The rest of these steps will need to be highly customized by you, based on the needs of your app. We'll be walking through how to add users to a database as an example. There is an example app in the `demo` folder of this repo. __These instructions assume that you already have a form properly set up in your application.__
 
 **Step 8: Adding Data to You Database**
-In the attached demo app you'll see a standard sign up form in `index.erb`
 
+In our `demo` app you'll see a standard sign up form in `index.erb`. It is set up to send data to a `post '/signup'` route. Within that route we're calling this method to add data from our form to the database:
+
+```ruby
+DATABASE.add("users", {"name" => params[:name], "email" => params[:email], "password" => params[:password]})
+```
+You'll notice that this looks very similar to the code we used to set up our "users" table - this is intentional. Firebase always requires two pieces of information - the table name and a hash of the information that you want to save to the database. This hash is setting the fields name, email and password to the values that were input in the form (via the params hash).
+
+Test this out in your own app. If it works properly you should begin to see the data in your Firebase dashboard.
+
+**Step 9: Accessing the Data**
+
+We've created a `get_data` method for you that will return an array of all the entries in the database when you call it like this:
+
+```ruby
+DATABASE.get_data
+```
+We've also created a `search_by_attribute` method that can be used to search for specific entries in your database. 
+
+Note: This is a very basic search method. If you are looking for someone named Bob and there are multiple Bobs in your database it will just return the last one it finds. If you want to find a specific entry you'll need to base your search on information that is unique to each entry. There are almost no restrictions on what kind of information can be added to a Firebase database, so it will be up to you to police any data added to the system. Take a look at the `post '/signup'` method in the demo for an example of how you can prevent duplicate entries.
 
 
