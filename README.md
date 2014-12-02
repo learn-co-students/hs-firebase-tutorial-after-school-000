@@ -8,7 +8,7 @@ level: 3
 
 Fork and clone this tutorial then follow along with the step-by-step instructions to set up a Firebase database for your app. 
 
-We've included a demo for you, but you should be following the steps below and adding code to your own app.
+We've included a demo for you, but you should be adding the code below to your own app.
 
 **Step 1:** Add the 'firebase' gem to your Gemfile and then run `bundle install` from your terminal.
 
