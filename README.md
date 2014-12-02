@@ -85,6 +85,8 @@ Take a look at the `index.erb` template for an example of how to iterate through
 
 We've also created a `search_by_attribute` method that can be used to search for specific entries in your database. This is a very basic search method. If you are looking for someone named Bob and there are multiple Bobs in your database it will just return the last one it finds. You'll have better success if you base your search on information that is more likely to be unique to each entry - like an email address. 
 
+**Step 10:** Try running your application and take a look at your Firebase dashboard to see a graphical representation of your data.
+
 ### Happy coding!
 
 
