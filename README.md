@@ -25,20 +25,13 @@ DATABASE.add_table("table name","hash of data that will be saved to table")
 
 **Step 5:** Sign up for a free hacker account from Firebase here: https://www.firebase.com/signup/ 
 
-
-
-[APP URL DOESN'T MATTER]
-
-
-
-
-**Step 6:** Create a new app in your Firebase account dashboard. After you hit the "Create New App" button you should see your new database called something funny like `amber-fire-4558.firebaseIO.com`. Click on the link to see your database. 
+**Step 6:** After signing up you'll be redirected to your Firebase dashboard. At the bottom of the page you should see a box that says "My First App" with a database called something funny like `amber-fire-4558.firebaseIO.com`. Click on the link to see your database. 
  
 **Step 5:** Copy the URL in your browser's navigation bar. Your app will be communicating with your Firebase database via this link.
 
-+ If this page looks scary to you DON'T WORRY! As you add data to the database you'll be able to see a graphical representation of it here. We'll be interacting with the database mostly through our app though. 
++ If this page looks scary to you DON'T WORRY! We'll be interacting with the database mostly through our app and as you add data to the database you'll be able to see a graphical representation of it here.
 
-**Step 6:** Paste the URL from Step 5 into the code we added at the top of the application controller (replacing "link to your database"). Like this:
+**Step 6:** Go back to your application controller and find the `FlatironBase.new` method. Replace the string "link to your database" with the URL that you copied in Step 5. Like this:
 
 ```ruby
 DATABASE = FlatironBase.new("https://your-database-4558.firebaseio.com/")
