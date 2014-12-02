@@ -18,7 +18,7 @@ Follow along with these step by step instructions to set up a Firebase database 
 
 ```ruby
 DATABASE = FlatironBase.new("link to your database")
-DATABASE.add_table("table name","placeholder hash")
+DATABASE.add_table("table name","hash of data that will be saved to table")
 ```
 
 **Step 5:** Sign up for a free hacker account from Firebase here: https://www.firebase.com/signup/
@@ -35,30 +35,41 @@ DATABASE.add_table("table name","placeholder hash")
 DATABASE = FlatironBase.new("https://your-database-4558.firebaseio.com/")
 ```
 
-**Step 7:** Change the string "table name" in the `add_table` method to the name of whatever table you want to add. I'm going to create a "users" table. Like this:
+**Step 7:** Change the string "table name" in the `add_table` method to the name of whatever table you want to add. I'm going to create a "users" table. 
+
+We are also going to replace the placeholder "hash of data that will be saved to table" with an actual hash. For instance, I want to save a name, email and password for each of my users. To save this information I need send Firebase a hash with keys that are labels for the data and values that are the actual data. The hash looks like this:
+
+{"name" => "Bob", 
+"email" => "bob@bob.com", 
+"password" => "passwordforbob"}
+
+And our complete `add_table` method looks like this:
 
 ```ruby
 DATABASE.add_table("users", {"name" => "Bob", "email" => "bob@bob.com", "password" => "passwordforbob"})
 ```
 
-When this app runs for the first time it will create a "users" table with a row for "Bob". **Note: Creating a placeholder hash with the actual attributes that you want to save (for example: name, email, password) will make your life MUCH easier.**
+When our app runs for the first time it will create a "users" table with a row for "Bob". **Note: Creating a placeholder hash with the actual attributes that you want to save (for example: name, email, password) will make your life MUCH easier.**
 
-+ The rest of these steps will need to be highly customized by you, based on the needs of your app. We'll be walking through how to add users to a database as an example. There is an example app in the `demo` folder of this repo. __These instructions assume that you already have a form properly set up in your application.__
++ This rest of these steps will need to be highly customized by you, based on the needs of your app. 
+
++ We're going to stick with the example of users and next we'll walk through how to add data to a database. __These instructions assume that you already have a form properly set up in your application.__
 
 **Step 8: Adding Data to You Database**
 
-In our `demo` app you'll see a standard sign up form in `index.erb`. It is set up to send data to a `post '/signup'` route. Within that route we're calling this method to add data from our form to the database:
+There is an example app in the `demo` folder of this repo and in that app you'll see a standard sign up form in `index.erb`. It is set up to send data to a `post '/signup'` route. Within that route we're calling this method to add data from our form to the database:
 
 ```ruby
 DATABASE.add("users", {"name" => params[:name], "email" => params[:email], "password" => params[:password]})
 ```
-You'll notice that this looks very similar to the code we used to set up our "users" table - this is intentional. Firebase always requires two pieces of information - the table name and a hash of the information that you want to save to the database. This hash is setting the fields name, email and password to the values that were input in the form (via the params hash).
+
+You'll notice that this looks very similar to the code we used to set up our "users" table - this is intentional. Firebase always requires two pieces of information - the table name and a hash of the information that you want to save to the database. This hash is telling Firebase - please save these values from the form (params hash) labelled with these keys.
 
 Test this out in your own app. If it works properly you should begin to see the data in your Firebase dashboard.
 
 **Step 9: Accessing the Data**
 
-We've created a `get_data` method for you that will return an array of all the entries in the database when you call it like this:
+We've also created a `get_data` method in firebase.rb that will return an array of all the entries in the database when you call it like this:
 
 ```ruby
 DATABASE.get_data
