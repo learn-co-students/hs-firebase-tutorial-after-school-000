@@ -23,7 +23,14 @@ DATABASE = FlatironBase.new("link to your database")
 DATABASE.add_table("table name","hash of data that will be saved to table")
 ```
 
-**Step 5:** Sign up for a free hacker account from Firebase here: https://www.firebase.com/signup/
+**Step 5:** Sign up for a free hacker account from Firebase here: https://www.firebase.com/signup/ 
+
+
+
+[APP URL DOESN'T MATTER]
+
+
+
 
 **Step 6:** Create a new app in your Firebase account dashboard. After you hit the "Create New App" button you should see your new database called something funny like `amber-fire-4558.firebaseIO.com`. Click on the link to see your database. 
  
@@ -41,14 +48,14 @@ DATABASE = FlatironBase.new("https://your-database-4558.firebaseio.com/")
 
 We are also going to replace the placeholder "hash of data that will be saved to table" with an actual hash. For instance, I want to save a name, email and password for each of my users. To save this information I need send Firebase a hash with keys that are labels for the data and values that are the actual data. The hash looks like this:
 
-{"name" => "Bob", 
-"email" => "bob@bob.com", 
-"password" => "passwordforbob"}
+{"name" => "Placeholder Name", 
+"email" => "placeholder@placeholder.com", 
+"password" => "placeholderpassword"}
 
 And our complete `add_table` method looks like this:
 
 ```ruby
-DATABASE.add_table("users", {"name" => "Bob", "email" => "bob@bob.com", "password" => "passwordforbob"})
+DATABASE.add_table("users", {"name" => "Placeholder Name", "email" => "placeholder@placeholder.com", "password" => "placeholderpassword"})
 ```
 
 When our app runs for the first time it will create a "users" table with a row for "Bob". **Note: Creating a placeholder hash with the actual attributes that you want to save (for example: name, email, password) will make your life MUCH easier.**
@@ -65,7 +72,7 @@ There is an example app in the `demo` folder of this repo and in that app you'll
 DATABASE.add("users", {"name" => params[:name], "email" => params[:email], "password" => params[:password]})
 ```
 
-You'll notice that this looks very similar to the code we used to set up our "users" table - this is intentional. Firebase always requires two pieces of information - the table name and a hash of the information that you want to save to the database. This hash is telling Firebase - please save these values from the form (params hash) labelled with these keys.
+You'll notice that this looks very similar to the code we used to set up our "users" table - this is intentional. Firebase always requires two pieces of information - the table name and a hash of the information that you want to save to the database. This hash is telling Firebase - please save these values from the form (params hash) labeled with these keys.
 
 Test this out in your own app. If it works properly you should begin to see the data in your Firebase dashboard.
 

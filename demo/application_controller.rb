@@ -5,7 +5,7 @@ require_relative './models/user.rb'
 
 class MyApp < Sinatra::Base
   DATABASE = FlatironBase.new("https://amber-fire-4558.firebaseio.com/")
-  DATABASE.add_table("users", {"name" => "Bob", "email" => "bob@bob.com", "password" => "passwordforbob"})
+  DATABASE.add_table("users", {"name" => "Placeholder Name", "email" => "placeholder@placeholder.com", "password" => "placeholderpassword"})
 
   get '/' do
     @users = DATABASE.get_data
