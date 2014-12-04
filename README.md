@@ -14,7 +14,7 @@ We've included a demo for you, but you should be adding the code below to your o
 
 **Step 2:** Create a firebase.rb file in your models directory and add this sweet code that Joe Cutler wrote: [Flatiron-Firebase-Simplified](https://gist.github.com/vanessadean/b6d8bb272063697a44e6)
 
-**Step 3:** Connect your new `firebase.rb` file to `application_controller.rb` with `require_relative`. 
+**Step 3:** Connect your new `firebase.rb` file to `application_controller.rb` with `require_relative "./firebase.rb"`. 
 
 **Step 4:** Add this code to the top of your application controller, right below `class MyApp < Sinatra::Base`:
 
